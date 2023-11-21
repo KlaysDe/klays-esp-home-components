@@ -1,7 +1,7 @@
-#include "key_press_event_sensor.h"
+
 
 #ifdef USE_ESP32
-
+#include "key_press_event_sensor.h"
 namespace esphome {
 namespace key_press_event_sensor {
 void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
