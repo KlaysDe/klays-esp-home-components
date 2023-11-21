@@ -33,8 +33,8 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
 
   const size_t KEYBOARD_IN_BUFFER_SIZE = 8;
   usb_transfer_t *KeyboardIn = NULL;
-  byte pressedKeys[MAX_SIM_KEYS];
-  byte lastPressedKeys[MAX_SIM_KEYS];
+  uint8_t pressedKeys[MAX_SIM_KEYS];
+  uint8_t lastPressedKeys[MAX_SIM_KEYS];
 
   void keyboard_transfer_cb(usb_transfer_t *transfer);
   void check_interface_desc_boot_keyboard(const void *p);
