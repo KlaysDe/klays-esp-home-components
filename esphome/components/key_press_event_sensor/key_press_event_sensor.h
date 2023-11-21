@@ -4,6 +4,7 @@
 
 #include "esphome/core/component.h"
 #include "esphome/components/text_sensor/text_sensor.h"
+#include "esphome/core/log.h"
 
 #include "elapsedMillis.h"
 #include <usb/usb_host.h>
@@ -39,7 +40,7 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
   void keyboard_transfer_cb(usb_transfer_t *transfer);
   void check_interface_desc_boot_keyboard(const void *p);
   void prepare_endpoint(const void *p);
-  void show_config_desc_full(const usb_config_desc_t *config_desc);
+  static void show_config_desc_full(const usb_config_desc_t *config_desc);
 
  public:
   void setup() override;
