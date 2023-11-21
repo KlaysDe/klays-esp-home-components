@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+#include "esphome/core/log.h"
 const size_t USB_HID_DESC_SIZE = 9;
 
 typedef union {

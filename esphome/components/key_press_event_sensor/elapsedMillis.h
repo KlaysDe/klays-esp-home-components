@@ -25,6 +25,9 @@
 #define elapsedMillis_h
 #ifdef __cplusplus
 
+#ifdef USE_ESP32
+#include "esphome/core/helpers.h"
+
 class elapsedMicros {
  private:
   unsigned long us;
@@ -228,3 +231,4 @@ class elapsedSeconds {
 
 #endif  // __cplusplus
 #endif  // elapsedMillis_h
+#endif

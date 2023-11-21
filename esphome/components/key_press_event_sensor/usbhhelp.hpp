@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 
+#include "esphome/core/log.h"
+
 const TickType_t HOST_EVENT_TIMEOUT = 1;
 const TickType_t CLIENT_EVENT_TIMEOUT = 1;
 

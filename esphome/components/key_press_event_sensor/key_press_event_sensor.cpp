@@ -1,8 +1,6 @@
 #include "key_press_event_sensor.h"
 
 #ifdef USE_ESP32
-#include "esphome/core/helpers.h"
-#include "esphome/core/log.h"
 
 namespace esphome {
 namespace key_press_event_sensor {
@@ -30,7 +28,8 @@ void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
           if (!found) {
             ESP_LOGI("", "KEY_DOWN: %02x", p[s + 2]);
             sprintf(sendBuffer, EVENT_MESSAGE, "keydown", p[s + 2]);
-            mqttClient.publish(EVENT_TOPIC, 1, false, sendBuffer, strlen(sendBuffer));
+            publish_state(sendBuffer);
+            // mqttClient.publish(EVENT_TOPIC, 1, false, sendBuffer, strlen(sendBuffer));
           }
         }
 
@@ -41,7 +40,8 @@ void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
           if (!found) {
             ESP_LOGI("", "KEY_UP: %02x", lastPressedKeys[s]);
             sprintf(sendBuffer, EVENT_MESSAGE, "keyup", lastPressedKeys[s]);
-            mqttClient.publish(EVENT_TOPIC, 1, false, sendBuffer, strlen(sendBuffer));
+            publish_state(sendBuffer);
+            // mqttClient.publish(EVENT_TOPIC, 1, false, sendBuffer, strlen(sendBuffer));
           }
         }
 
