@@ -23,6 +23,3 @@ CONFIG_SCHEMA = (text_sensor
 async def to_code(config):
     var = await text_sensor.new_text_sensor(config)
     cg.register_component(var, config)
-    
-    sens = await cg.get_variable(config[CONF_SENSOR_ID])
-    cg.add(var.set_sensor(sens))
