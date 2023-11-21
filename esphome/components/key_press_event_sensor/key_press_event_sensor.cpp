@@ -1,4 +1,4 @@
-#include "usb_keyboard_scanner.h"
+#include "key_press_event_sensor.h"
 
 void esphome::key_press_sensor::KeyPressSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
   if (Device_Handle == transfer->device_handle) {
