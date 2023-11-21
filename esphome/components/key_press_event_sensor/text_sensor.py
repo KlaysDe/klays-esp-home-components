@@ -15,7 +15,6 @@ keyboardSensorEntity = empty_text_sensor_ns.class_('KeyPressEventSensor', text_s
 CONFIG_SCHEMA = (text_sensor
                 .text_sensor_schema(keyboardSensorEntity)
                 .extend({
-                    cv.Required(CONF_SENSOR_ID): cv.use_id(sensor.Sensor),
                 })
                 .extend(cv.COMPONENT_SCHEMA)
 )
