@@ -155,7 +155,7 @@ void KeyPressEventSensor::show_config_desc_full(const usb_config_desc_t *config_
 
 void KeyPressEventSensor::setup() {
   Instance = this;
-  usbh_setup([](usb_config_desc_t *x) { Instance->show_config_desc_full(x); });
+  usbh_setup([](const usb_config_desc_t *x) { Instance->show_config_desc_full(x); });
 }
 
 void KeyPressEventSensor::loop() {
