@@ -158,6 +158,8 @@ void KeyPressEventSensor::setup() { usbh_setup(show_config_desc_full); }
 void KeyPressEventSensor::loop() {
   usbh_task();
 
+  micros();
+
   if (isKeyboardReady && !isKeyboardPolling && (KeyboardTimer > KeyboardInterval)) {
     KeyboardIn->num_bytes = 8;
     esp_err_t err = usb_host_transfer_submit(KeyboardIn);
