@@ -1,5 +1,9 @@
 #include "key_press_event_sensor.h"
 
+#ifdef USE_ESP32
+#include "esphome/core/helpers.h"
+#include "esphome/core/log.h"
+
 namespace esphome {
 namespace key_press_event_sensor {
 void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
@@ -166,3 +170,5 @@ void KeyPressEventSensor::loop() {
 }
 }  // namespace key_press_event_sensor
 }  // namespace esphome
+
+#endif
