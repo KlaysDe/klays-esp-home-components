@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
+#pragma once
 #ifdef USE_ESP32
-
 namespace esphome {
 namespace key_press_event_sensor {
 #include "esphome/core/log.h"
