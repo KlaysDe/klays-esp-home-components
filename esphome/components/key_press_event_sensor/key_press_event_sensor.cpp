@@ -1,6 +1,8 @@
 #include "key_press_event_sensor.h"
 
-void esphome::key_press_sensor::KeyPressSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
+namespace esphome {
+namespace key_press_event_sensor {
+void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
   if (Device_Handle == transfer->device_handle) {
     isKeyboardPolling = false;
     if (transfer->status == 0) {
@@ -50,7 +52,7 @@ void esphome::key_press_sensor::KeyPressSensor::keyboard_transfer_cb(usb_transfe
   }
 }
 
-void esphome::key_press_sensor::KeyPressSensor::check_interface_desc_boot_keyboard(const void *p) {
+void KeyPressEventSensor::check_interface_desc_boot_keyboard(const void *p) {
   const usb_intf_desc_t *intf = (const usb_intf_desc_t *) p;
 
   if ((intf->bInterfaceClass == USB_CLASS_HID) && (intf->bInterfaceSubClass == 1) && (intf->bInterfaceProtocol == 1)) {
@@ -63,7 +65,7 @@ void esphome::key_press_sensor::KeyPressSensor::check_interface_desc_boot_keyboa
   }
 }
 
-void esphome::key_press_sensor::KeyPressSensor::prepare_endpoint(const void *p) {
+void KeyPressEventSensor::prepare_endpoint(const void *p) {
   const usb_ep_desc_t *endpoint = (const usb_ep_desc_t *) p;
   esp_err_t err;
 
@@ -91,7 +93,7 @@ void esphome::key_press_sensor::KeyPressSensor::prepare_endpoint(const void *p) 
   }
 }
 
-void esphome::key_press_sensor::KeyPressSensor::show_config_desc_full(const usb_config_desc_t *config_desc) {
+void KeyPressEventSensor::show_config_desc_full(const usb_config_desc_t *config_desc) {
   // Full decode of config desc.
   const uint8_t *p = &config_desc->val[0];
   static uint8_t USB_Class = 0;
@@ -147,9 +149,9 @@ void esphome::key_press_sensor::KeyPressSensor::show_config_desc_full(const usb_
   }
 }
 
-void esphome::key_press_sensor::KeyPressSensor::setup() { usbh_setup(show_config_desc_full); }
+void KeyPressEventSensor::setup() { usbh_setup(show_config_desc_full); }
 
-void esphome::key_press_sensor::KeyPressSensor::loop() {
+void KeyPressEventSensor::loop() {
   usbh_task();
 
   if (isKeyboardReady && !isKeyboardPolling && (KeyboardTimer > KeyboardInterval)) {
@@ -162,3 +164,5 @@ void esphome::key_press_sensor::KeyPressSensor::loop() {
     KeyboardTimer = 0;
   }
 }
+}  // namespace key_press_event_sensor
+}  // namespace esphome
