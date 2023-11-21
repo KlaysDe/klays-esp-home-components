@@ -24,6 +24,8 @@
 #pragma once
 #ifdef USE_ESP32
 
+#ifndef KEY_PRESS_USB_HELP_H
+#define KEY_PRESS_USB_HELP_H
 namespace esphome {
 namespace key_press_event_sensor {
 #include "esphome/core/log.h"
@@ -123,4 +125,5 @@ static void usbh_task(void) {
 }  // namespace key_press_event_sensor
 }  // namespace esphome
 
+#endif
 #endif

@@ -2,6 +2,9 @@
 
 #ifdef USE_ESP32
 
+#ifndef KEY_PRESS_SENS_H
+#define KEY_PRESS_SENS_H
+
 #include "esphome/core/component.h"
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "esphome/core/log.h"
@@ -122,4 +125,5 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
 }  // namespace key_press_event_sensor
 }  // namespace esphome
 
+#endif
 #endif
