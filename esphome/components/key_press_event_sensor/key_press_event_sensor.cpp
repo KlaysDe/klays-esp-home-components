@@ -1,7 +1,7 @@
-
-
 #ifdef USE_ESP32
+
 #include "key_press_event_sensor.h"
+
 namespace esphome {
 namespace key_press_event_sensor {
 void KeyPressEventSensor::keyboard_transfer_cb(usb_transfer_t *transfer) {
@@ -157,8 +157,6 @@ void KeyPressEventSensor::setup() { usbh_setup(show_config_desc_full); }
 
 void KeyPressEventSensor::loop() {
   usbh_task();
-
-  micros();
 
   if (isKeyboardReady && !isKeyboardPolling && (KeyboardTimer > KeyboardInterval)) {
     KeyboardIn->num_bytes = 8;

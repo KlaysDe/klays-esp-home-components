@@ -5,7 +5,10 @@
 #include "esphome/core/component.h"
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "esphome/core/log.h"
+#include "esphome/core/automation.h"
+#include "esphome/core/application.h"
 
+#include <cinttypes>
 #include <usb/usb_host.h>
 #include "show_desc.hpp"
 #include "usbhhelp.hpp"
