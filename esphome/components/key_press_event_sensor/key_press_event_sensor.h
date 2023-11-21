@@ -31,6 +31,7 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
   uint8_t KeyboardInterval;
   bool isKeyboardPolling = false;
   elapsedMillis KeyboardTimer;
+  char sendBuffer[100];
 
   const size_t KEYBOARD_IN_BUFFER_SIZE = 8;
   usb_transfer_t *KeyboardIn = NULL;

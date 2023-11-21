@@ -26,9 +26,12 @@
 #ifndef elapsedMillis_h
 #define elapsedMillis_h
 #ifdef __cplusplus
+
+#include "esphome/core/defines.h"
+#include "esphome/core/helpers.h"
+
 namespace esphome {
 namespace key_press_event_sensor {
-#include "esphome/core/helpers.h"
 
 class elapsedMicros {
  private:

@@ -67,7 +67,7 @@ static void _client_event_callback(const usb_host_client_event_msg_t *event_msg,
       break;
     /**< A device opened by the client is now gone */
     case USB_HOST_CLIENT_EVENT_DEV_GONE:
-      ESP_LOGI("", "Device Gone handle: %x", event_msg->dev_gone.dev_hdl);
+      ESP_LOGI("", "Device Gone handle: %x", (unsigned int) event_msg->dev_gone.dev_hdl);
       break;
     default:
       ESP_LOGI("", "Unknown value %d", event_msg->event);
