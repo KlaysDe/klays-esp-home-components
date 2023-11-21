@@ -27,6 +27,8 @@ extern "C" {
 namespace esphome {
 namespace key_press_event_sensor {
 
+class KeyPressEventSensor;
+KeyPressEventSensor *Instance;
 class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
  private:
   class elapsedMillis {
@@ -113,7 +115,6 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
   void show_config_desc_full(const usb_config_desc_t *config_desc);
 
  public:
-  static KeyPressEventSensor *Instance;
   void setup() override;
   void loop() override;
 };
