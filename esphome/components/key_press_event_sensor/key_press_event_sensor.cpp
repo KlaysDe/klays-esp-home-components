@@ -87,7 +87,7 @@ void KeyPressEventSensor::prepare_endpoint(const void *p) {
     }
     KeyboardIn->device_handle = Device_Handle;
     KeyboardIn->bEndpointAddress = endpoint->bEndpointAddress;
-    KeyboardIn->callback = keyboard_transfer_cb;
+    KeyboardIn->callback = [](usb_transfer_t *transfer) { Instance->keyboard_transfer_cb(transfer); };
     KeyboardIn->context = NULL;
     isKeyboardReady = true;
     KeyboardInterval = endpoint->bInterval;
@@ -154,8 +154,8 @@ void KeyPressEventSensor::show_config_desc_full(const usb_config_desc_t *config_
 }
 
 void KeyPressEventSensor::setup() {
-  KeyPressEventSensor *th = this;
-  usbh_setup([](usb_config_desc_t *x) { th->show_config_desc_full(x); });
+  Instance = this;
+  usbh_setup([](usb_config_desc_t *x) { Instance->show_config_desc_full(x); });
 }
 
 void KeyPressEventSensor::loop() {

@@ -113,6 +113,7 @@ class KeyPressEventSensor : public text_sensor::TextSensor, public Component {
   void show_config_desc_full(const usb_config_desc_t *config_desc);
 
  public:
+  static KeyPressEventSensor *Instance;
   void setup() override;
   void loop() override;
 };
