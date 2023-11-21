@@ -47,7 +47,7 @@ typedef union {
   uint8_t val[USB_HID_DESC_SIZE];
 } usb_hid_desc_t;
 
-void show_dev_desc(const usb_device_desc_t *dev_desc) {
+static void show_dev_desc(const usb_device_desc_t *dev_desc) {
   ESP_LOGI("", "bLength: %d", dev_desc->bLength);
   ESP_LOGI("", "bDescriptorType(device): %d", dev_desc->bDescriptorType);
   ESP_LOGI("", "bcdUSB: 0x%x", dev_desc->bcdUSB);
@@ -64,7 +64,7 @@ void show_dev_desc(const usb_device_desc_t *dev_desc) {
   ESP_LOGI("", "bNumConfigurations: %d", dev_desc->bNumConfigurations);
 }
 
-void show_config_desc(const void *p) {
+static void show_config_desc(const void *p) {
   const usb_config_desc_t *config_desc = (const usb_config_desc_t *) p;
 
   ESP_LOGI("", "bLength: %d", config_desc->bLength);
@@ -81,7 +81,7 @@ void show_config_desc(const void *p) {
   ESP_LOGI("", "bMaxPower: %d = %d mA", config_desc->bMaxPower, config_desc->bMaxPower * 2);
 }
 
-uint8_t show_interface_desc(const void *p) {
+static uint8_t show_interface_desc(const void *p) {
   const usb_intf_desc_t *intf = (const usb_intf_desc_t *) p;
 
   ESP_LOGI("", "bLength: %d", intf->bLength);
@@ -96,7 +96,7 @@ uint8_t show_interface_desc(const void *p) {
   return intf->bInterfaceClass;
 }
 
-void show_endpoint_desc(const void *p) {
+static void show_endpoint_desc(const void *p) {
   const usb_ep_desc_t *endpoint = (const usb_ep_desc_t *) p;
   const char *XFER_TYPE_NAMES[] = {"Control", "Isochronous", "Bulk", "Interrupt"};
   ESP_LOGI("", "bLength: %d", endpoint->bLength);
@@ -110,7 +110,7 @@ void show_endpoint_desc(const void *p) {
   ESP_LOGI("", "bInterval: %d", endpoint->bInterval);
 }
 
-void show_hid_desc(const void *p) {
+static void show_hid_desc(const void *p) {
   usb_hid_desc_t *hid = (usb_hid_desc_t *) p;
   ESP_LOGI("", "bLength: %d", hid->bLength);
   ESP_LOGI("", "bDescriptorType (HID): %d", hid->bDescriptorType);
@@ -125,7 +125,7 @@ void show_hid_desc(const void *p) {
   }
 }
 
-void show_interface_assoc(const void *p) {
+static void show_interface_assoc(const void *p) {
   usb_iad_desc_t *iad = (usb_iad_desc_t *) p;
   ESP_LOGI("", "bLength: %d", iad->bLength);
   ESP_LOGI("", "bDescriptorType: %d", iad->bDescriptorType);

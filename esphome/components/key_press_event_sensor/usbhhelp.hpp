@@ -36,7 +36,7 @@ usb_device_handle_t Device_Handle;
 typedef void (*usb_host_enum_cb_t)(const usb_config_desc_t *config_desc);
 static usb_host_enum_cb_t _USB_host_enumerate;
 
-void _client_event_callback(const usb_host_client_event_msg_t *event_msg, void *arg) {
+static void _client_event_callback(const usb_host_client_event_msg_t *event_msg, void *arg) {
   esp_err_t err;
   switch (event_msg->event) {
     /**< A new device has been enumerated and added to the USB Host Library */
@@ -77,7 +77,7 @@ void _client_event_callback(const usb_host_client_event_msg_t *event_msg, void *
 
 // Reference: esp-idf/examples/peripherals/usb/host/usb_host_lib/main/usb_host_lib_main.c
 
-void usbh_setup(usb_host_enum_cb_t enumeration_cb) {
+static void usbh_setup(usb_host_enum_cb_t enumeration_cb) {
   const usb_host_config_t config = {
       .intr_flags = ESP_INTR_FLAG_LEVEL1,
   };
@@ -94,7 +94,7 @@ void usbh_setup(usb_host_enum_cb_t enumeration_cb) {
   _USB_host_enumerate = enumeration_cb;
 }
 
-void usbh_task(void) {
+static void usbh_task(void) {
   uint32_t event_flags;
   static bool all_clients_gone = false;
   static bool all_dev_free = false;
