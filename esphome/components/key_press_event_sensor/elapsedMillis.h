@@ -21,11 +21,13 @@
  * THE SOFTWARE.
  */
 
+#ifdef USE_ESP32
+
 #ifndef elapsedMillis_h
 #define elapsedMillis_h
 #ifdef __cplusplus
-
-#ifdef USE_ESP32
+namespace esphome {
+namespace key_press_event_sensor {
 #include "esphome/core/helpers.h"
 
 class elapsedMicros {
@@ -228,6 +230,8 @@ class elapsedSeconds {
     return r;
   }
 };
+}  // namespace key_press_event_sensor
+}  // namespace esphome
 
 #endif  // __cplusplus
 #endif  // elapsedMillis_h

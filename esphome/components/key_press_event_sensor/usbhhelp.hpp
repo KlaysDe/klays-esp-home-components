@@ -22,6 +22,10 @@
  * SOFTWARE.
  */
 
+#ifdef USE_ESP32
+
+namespace esphome {
+namespace key_press_event_sensor {
 #include "esphome/core/log.h"
 
 const TickType_t HOST_EVENT_TIMEOUT = 1;
@@ -116,3 +120,7 @@ void usbh_task(void) {
     ESP_LOGI("", "usb_host_client_handle_events: %x", err);
   }
 }
+}  // namespace key_press_event_sensor
+}  // namespace esphome
+
+#endif

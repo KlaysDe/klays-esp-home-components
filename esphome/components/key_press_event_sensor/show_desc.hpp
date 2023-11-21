@@ -22,6 +22,10 @@
  * SOFTWARE.
  */
 
+#ifdef USE_ESP32
+
+namespace esphome {
+namespace key_press_event_sensor {
 #include "esphome/core/log.h"
 const size_t USB_HID_DESC_SIZE = 9;
 
@@ -132,3 +136,6 @@ void show_interface_assoc(const void *p) {
   ESP_LOGI("", "bFunctionProtocol: 0x%02x", iad->bFunctionProtocol);
   ESP_LOGI("", "iFunction: %d", iad->iFunction);
 }
+}  // namespace key_press_event_sensor
+}  // namespace esphome
+#endif
